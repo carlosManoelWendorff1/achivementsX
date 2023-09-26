@@ -4,6 +4,9 @@ import '../Models/game.dart';
 import '../widgets/game_panel.dart';
 
 class GameListPage extends StatelessWidget {
+
+  int _currentIndex = 1;
+
   final List<Game> games;
 
   GameListPage({required this.games});
@@ -11,9 +14,7 @@ class GameListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lista de Jogos'),
-      ),
+      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
@@ -34,6 +35,35 @@ class GameListPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+          onTap: (int index) {
+          if (index == 2) {
+            // Navigate to the /login route when "Settings" tab is tapped
+            Navigator.of(context).pushNamed('/login');
+          }
+           if (index == 0) {
+            // Navigate to the /login route when "Settings" tab is tapped
+            Navigator.of(context).pushNamed('/profile');
+          }
+        },
+        items: [
+           BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'profile',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.logout),
+            label: 'logout',
+          ),
+        ],
+      ),
     );
-  }
+    
+  }  
+  
 }
