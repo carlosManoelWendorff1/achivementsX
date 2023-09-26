@@ -1,75 +1,65 @@
 import 'package:flutter/material.dart';
-
+import 'package:x_axhievments/screens/profile_page.dart';
 import 'Models/game.dart';
 import 'screens/game_list_page.dart';
 import 'screens/login_page.dart';
 
 void main() {
-
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final List<Game> games = [
+    Game(
+      name: 'Game 1',
+      imageAsset: 'assets/images/test1.png',
+      description: 'Descrição do Jogo 1',
+    ),
+    Game(
+      name: 'Game 2',
+      imageAsset: 'assets/images/teste2.jpeg',
+      description: 'Descrição do Jogo 2',
+    ),
+    Game(
+      name: 'Game 1',
+      imageAsset: 'assets/images/test1.png',
+      description: 'Descrição do Jogo 1',
+    ),
+    Game(
+      name: 'Game 2',
+      imageAsset: 'assets/images/teste2.jpeg',
+      description: 'Descrição do Jogo 2',
+    ),
+    Game(
+      name: 'Game 1',
+      imageAsset: 'assets/images/test1.png',
+      description: 'Descrição do Jogo 1',
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
-     final List<Game> games = [
-      Game(
-        name: 'Game 1',
-        imageAsset: 'assets/images/test1.png', // Substitua pelo caminho da imagem
-        description: 'Descrição do Jogo 1',
-      ),
-      Game(
-        name: 'Game 2',
-        imageAsset: 'assets/images/teste2.jpeg', // Substitua pelo caminho da imagem
-        description: 'Descrição do Jogo 2',
-      ),
-      Game(
-        name: 'Game 1',
-        imageAsset: 'assets/images/test1.png', // Substitua pelo caminho da imagem
-        description: 'Descrição do Jogo 1',
-      ),
-      Game(
-        name: 'Game 2',
-        imageAsset: 'assets/images/teste2.jpeg', // Substitua pelo caminho da imagem
-        description: 'Descrição do Jogo 2',
-      ),
-      Game(
-        name: 'Game 1',
-        imageAsset: 'assets/images/test1.png', // Substitua pelo caminho da imagem
-        description: 'Descrição do Jogo 1',
-      ),
-      Game(
-        name: 'Game 2',
-        imageAsset: 'assets/images/teste2.jpeg', // Substitua pelo caminho da imagem
-        description: 'Descrição do Jogo 2',
-      ),
-      Game(
-        name: 'Game 1',
-        imageAsset: 'assets/images/test1.png', // Substitua pelo caminho da imagem
-        description: 'Descrição do Jogo 1',
-      ),
-      Game(
-        name: 'Game 2',
-        imageAsset: 'assets/images/teste2.jpeg', // Substitua pelo caminho da imagem
-        description: 'Descrição do Jogo 2',
-      ),
-      // Adicione mais jogos conforme necessário
-    ];
-    
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.green, // Set the primary color to green
-        brightness: Brightness.dark, // Use dark theme
+        primaryColor: Colors.green,
+        brightness: Brightness.dark,
+        iconTheme: IconThemeData(
+          color: Colors.green, // Set the default icon color to green
+        ),
       ),
-      initialRoute: '/', // Specify the initial route
+      initialRoute: '/',
       routes: {
-        '/': (context) => LoginPage(), // HomeScreen is the default route
-        '/login': (context) => LoginPage(), // Add your login route
-        '/gameList': (context) => GameListPage(games: games,), // Add your game list route
+        '/': (context) => LoginPage(),
+        '/login': (context) => LoginPage(),
+        '/gameList': (context) => GameListPage(games: games),
+        '/profile': (context) => ProfileScreen()
         // Add more routes as needed
       },
     );
   }
 }
-
-
