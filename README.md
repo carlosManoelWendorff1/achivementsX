@@ -14,19 +14,27 @@
 
   <p>Get started with x_axhievments and dive into the world of Flutter development. Follow these steps to set up and run the project on your local machine:</p>
 
-  <ol>
-    <li><strong>Clone the repository:</strong></li>
-    <pre><code>git clone https://github.com/carlosManoelWendorff1/achivementsX.git</code></pre>
-  <ol>
-    <li><strong>Navigate to the project directory:</strong></li>
-    <pre><code>cd x_axhievments</code></pre>
+ <ol>
+    <li>
+      <p><strong>Clone the repository:</strong></p>
+      <pre><code>git clone https://github.com/carlosManoelWendorff1/achivementsX.git</code></pre>
+    </li>
 
-    <li><strong>Install dependencies:</strong></li>
-    <pre><code>flutter pub get</code></pre>
+    <li>
+      <p><strong>Navigate to the project directory:</strong></p>
+      <pre><code>cd x_axhievments</code></pre>
+    </li>
 
-    <li><strong>Run the app:</strong></li>
-    <pre><code>flutter run</code></pre>
+    <li>
+      <p><strong>Install dependencies:</strong></p>
+      <pre><code>flutter pub get</code></pre>
+    </li>
 
+    <li>
+      <p><strong>Run the app:</strong></p>
+      <pre><code>flutter run</code></pre>
+    </li>
+  </ol>
 
   <p>This command will launch the x_axhievments app on the connected device or simulator.</p>
 
