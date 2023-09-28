@@ -16,8 +16,8 @@
 
   <ol>
     <li><strong>Clone the repository:</strong></li>
-    <pre><code>git clone https://github.com/your-username/x_axhievments.git</code></pre>
-
+    <pre><code>git clone https://github.com/carlosManoelWendorff1/achivementsX.git</code></pre>
+  <ol>
     <li><strong>Navigate to the project directory:</strong></li>
     <pre><code>cd x_axhievments</code></pre>
 
@@ -26,7 +26,7 @@
 
     <li><strong>Run the app:</strong></li>
     <pre><code>flutter run</code></pre>
-  </ol>
+
 
   <p>This command will launch the x_axhievments app on the connected device or simulator.</p>
 
