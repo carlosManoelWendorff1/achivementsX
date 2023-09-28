@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
+  
   <head>
-  <style>
-    /* Style to display images inline and adjust their size */
-    img {
-      width: 100px; /* Adjust the width as needed */
-      height: auto; /* Maintain aspect ratio */
-      display: inline-block;
-      margin: 5px; /* Add some margin for spacing */
-    }
-  </style>
-</head>
+    <style>
+      img {
+        width: 100px; /* Adjust the width as needed */
+        height: auto; /* Maintain aspect ratio */
+        display: inline-block;
+        margin: 5px; /* Add some margin for spacing */
+      }
+    </style>
+  </head>
+
 <body>
   <h1>x_axhievments</h1>
   
