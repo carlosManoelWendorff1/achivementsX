@@ -41,15 +41,12 @@
 
   <ul>
     <li><strong>Flutter SDK:</strong> Ensure you have the Flutter SDK installed and configured properly. You can download it from the <a href="https://flutter.dev/docs/get-started/install">official Flutter website</a>.</li>
-
     <li><strong>Dependency Issues:</strong> If you face dependency-related problems, run the following command to update dependencies:</li>
     <pre><code>flutter pub upgrade</code></pre>
-
     <li><strong>Clean Build:</strong> Perform a clean build to ensure a fresh start:</li>
     <pre><code>flutter clean</code></pre>
     <pre><code>flutter pub get</code></pre>
     <pre><code>flutter run</code></pre>
-
     <li><strong>Device Connection:</strong> Make sure your device is properly connected or your emulator is running. Use <code>flutter devices</code> to list available devices and emulators.</li>
   </ul>
 
