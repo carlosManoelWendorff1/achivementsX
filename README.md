@@ -1,24 +1,13 @@
 <!DOCTYPE html>
 <html>
   
-  <head>
-    <style>
-      img {
-        width: 100px; /* Adjust the width as needed */
-        height: auto; /* Maintain aspect ratio */
-        display: inline-block;
-        margin: 5px; /* Add some margin for spacing */
-      }
-    </style>
-  </head>
-
 <body>
   <h1>x_axhievments</h1>
   
-  <img src="WhatsApp Image 2023-09-27 at 22.28.15 (2).jpeg" alt="Image Description">
-  <img src="WhatsApp Image 2023-09-27 at 22.28.15 (1).jpeg" alt="Image Description">
-  <img src="WhatsApp Image 2023-09-27 at 22.28.15.jpeg" alt="Image Description"><br>
-  <img src="WhatsApp Image 2023-09-27 at 22.28.15 (3).jpeg" alt="Image Description">
+  <img src="WhatsApp Image 2023-09-27 at 22.28.15 (2).jpeg" alt="Image Description"  style="width: 100px; height: auto; display: inline-block; margin: 5px;">
+  <img src="WhatsApp Image 2023-09-27 at 22.28.15 (1).jpeg" alt="Image Description"  style="width: 100px; height: auto; display: inline-block; margin: 5px;">
+  <img src="WhatsApp Image 2023-09-27 at 22.28.15.jpeg" alt="Image Description"  style="width: 100px; height: auto; display: inline-block; margin: 5px;"><br>
+  <img src="WhatsApp Image 2023-09-27 at 22.28.15 (3).jpeg" alt="Image Description"  style="width: 100px; height: auto; display: inline-block; margin: 5px;">
   <img src="flutter_01.png" alt="Image Description">
 
 
