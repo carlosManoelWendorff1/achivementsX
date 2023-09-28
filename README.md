@@ -19,17 +19,14 @@
       <p><strong>Clone the repository:</strong></p>
       <pre><code>git clone https://github.com/carlosManoelWendorff1/achivementsX.git</code></pre>
     </li>
-
     <li>
       <p><strong>Navigate to the project directory:</strong></p>
       <pre><code>cd x_axhievments</code></pre>
     </li>
-
     <li>
       <p><strong>Install dependencies:</strong></p>
       <pre><code>flutter pub get</code></pre>
     </li>
-
     <li>
       <p><strong>Run the app:</strong></p>
       <pre><code>flutter run</code></pre>
