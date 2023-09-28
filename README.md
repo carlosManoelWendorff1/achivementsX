@@ -8,7 +8,7 @@
   <img src="WhatsApp Image 2023-09-27 at 22.28.15 (1).jpeg" alt="Image Description"  style="width: 100px; height: auto; display: inline-block; margin: 5px;">
   <img src="WhatsApp Image 2023-09-27 at 22.28.15.jpeg" alt="Image Description"  style="width: 100px; height: auto; display: inline-block; margin: 5px;"><br>
   <img src="WhatsApp Image 2023-09-27 at 22.28.15 (3).jpeg" alt="Image Description"  style="width: 100px; height: auto; display: inline-block; margin: 5px;">
-  <img src="flutter_01.png" alt="Image Description">
+  <img src="flutter_01.png" alt="Image Description" style="width: 100px; height: auto; display: inline-block; margin: 5px;">
 
 
   <p>Welcome to x_axhievments - your ultimate game companion! This Flutter project is here to revolutionize the way you track your progress in games and celebrate your achievements. Say goodbye to the days of forgetting where you left off or missing out on your triumphs. With x_axhievments, you're always in the game!</p>
