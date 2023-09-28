@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:x_axhievments/Models/achievments.dart';
 import 'package:x_axhievments/screens/profile_page.dart';
+import 'package:x_axhievments/screens/register_page.dart';
 import 'Models/game.dart';
 import 'screens/game_list_page.dart';
 import 'screens/login_page.dart';
@@ -16,31 +18,108 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final List<Game> games = [
     Game(
-      name: 'Game 1',
+      name: 'Super Adventure Quest',
       imageAsset: 'assets/images/test1.png',
-      description: 'Descrição do Jogo 1',
+      description: 'Embark on an epic adventure in a mystical world.',
+      achievements: [
+        Achievement(
+          name: 'Novice Explorer',
+          description: 'Discover your first hidden treasure.',
+          status: true, // Example: Achievement is completed
+        ),
+        Achievement(
+          name: 'Master of Swords',
+          description: 'Defeat 100 enemies with your sword.',
+          status: false, // Example: Achievement is not completed
+        ),
+      ],
     ),
     Game(
-      name: 'Game 2',
+      name: 'Galactic Racer Pro',
       imageAsset: 'assets/images/teste2.jpeg',
-      description: 'Descrição do Jogo 2',
+      description: 'Race through the galaxy and become the ultimate champion.',
+      achievements: [
+        Achievement(
+          name: 'Speed Demon',
+          description: 'Achieve a top speed of 1000 mph in a race.',
+          status: true, // Example: Achievement is completed
+        ),
+        Achievement(
+          name: 'Galactic Explorer',
+          description: 'Visit all 10 unique planets in the game.',
+          status: true, // Example: Achievement is completed
+        ),
+        Achievement(
+          name: 'Speed Demon',
+          description: 'Achieve a top speed of 1000 mph in a race.',
+          status: false, // Example: Achievement is not completed
+        ),
+        Achievement(
+          name: 'Galactic Explorer',
+          description: 'Visit all 10 unique planets in the game.',
+          status: false, // Example: Achievement is not completed
+        ),
+        Achievement(
+          name: 'Speed Demon',
+          description: 'Achieve a top speed of 1000 mph in a race.',
+          status: true, // Example: Achievement is completed
+        ),
+        Achievement(
+          name: 'Galactic Explorer',
+          description: 'Visit all 10 unique planets in the game.',
+          status: false, // Example: Achievement is not completed
+        ),
+        Achievement(
+          name: 'Speed Demon',
+          description: 'Achieve a top speed of 1000 mph in a race.',
+          status: true, // Example: Achievement is completed
+        ),
+        Achievement(
+          name: 'Galactic Explorer',
+          description: 'Visit all 10 unique planets in the game.',
+          status: true, // Example: Achievement is completed
+        ),
+        Achievement(
+          name: 'Speed Demon',
+          description: 'Achieve a top speed of 1000 mph in a race.',
+          status: false, // Example: Achievement is not completed
+        ),
+        Achievement(
+          name: 'Galactic Explorer',
+          description: 'Visit all 10 unique planets in the game.',
+          status: false, // Example: Achievement is not completed
+        ),
+        Achievement(
+          name: 'Speed Demon',
+          description: 'Achieve a top speed of 1000 mph in a race.',
+          status: true, // Example: Achievement is completed
+        ),
+        Achievement(
+          name: 'Galactic Explorer',
+          description: 'Visit all 10 unique planets in the game.',
+          status: false, // Example: Achievement is not completed
+        ),
+      ],
     ),
     Game(
-      name: 'Game 1',
-      imageAsset: 'assets/images/test1.png',
-      description: 'Descrição do Jogo 1',
-    ),
-    Game(
-      name: 'Game 2',
-      imageAsset: 'assets/images/teste2.jpeg',
-      description: 'Descrição do Jogo 2',
-    ),
-    Game(
-      name: 'Game 1',
-      imageAsset: 'assets/images/test1.png',
-      description: 'Descrição do Jogo 1',
+      name: 'Mystic Wizardry',
+      imageAsset: 'assets/images/abner.jpg',
+      description: 'Unleash your magical powers in a world of enchantment.',
+      achievements: [
+        Achievement(
+          name: 'Apprentice Mage',
+          description: 'Learn your first spell and cast it successfully.',
+          status: true, // Example: Achievement is completed
+        ),
+        Achievement(
+          name: 'Archmage',
+          description: 'Master all 10 elemental spells in the game.',
+          status: false, // Example: Achievement is not completed
+        ),
+      ],
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -57,7 +136,8 @@ class _MyAppState extends State<MyApp> {
         '/': (context) => LoginPage(),
         '/login': (context) => LoginPage(),
         '/gameList': (context) => GameListPage(games: games),
-        '/profile': (context) => ProfileScreen()
+        '/profile': (context) => ProfileScreen(),
+        '/registration': (context) => RegisterPage()
         // Add more routes as needed
       },
     );
