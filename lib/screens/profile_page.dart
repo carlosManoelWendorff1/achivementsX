@@ -11,6 +11,8 @@ class ProfileScreen extends StatelessWidget {
         body: ProfileWidget(),
         bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
           onTap: (int index) {
           if (index == 1) {
             // Navigate to the /login route when "Settings" tab is tapped

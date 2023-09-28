@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: LoginForm(),
+        child: RegisterForm(),
       ),
     );
   }
 }
-class LoginForm extends StatelessWidget {
+class RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,36 +22,34 @@ class LoginForm extends StatelessWidget {
         children: <Widget>[
           TextFormField(
             decoration: InputDecoration(
-              labelText: 'Username',
+              labelText: 'Usuário',
               prefixIcon: Icon(Icons.person),
             ),
           ),
           SizedBox(height: 20),
           TextFormField(
             decoration: InputDecoration(
-              labelText: 'Password',
+              labelText: 'Senha',
               prefixIcon: Icon(Icons.lock),
             ),
             obscureText: true, // Hide password text
           ),
           SizedBox(height: 20),
-         ElevatedButton(
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: 'Email',
+              prefixIcon: Icon(Icons.mail),
+            ),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/gameList');
+              Navigator.pushNamed(context, '/login');
             },
             style: ElevatedButton.styleFrom(
               primary: Colors.green, // Set button color to green
             ),
-            child: Text('Login'),
-          ),
-          SizedBox(height: 10),
-          TextButton(
-            onPressed: () {
-              // Navigate to the registration screen here
-              // You can replace '/registration' with the actual route for your registration screen
-              Navigator.pushNamed(context, '/registration');
-            },
-            child: Text('Register'),
+            child: Text('Registrar'),
           ),
         ],
       ),
