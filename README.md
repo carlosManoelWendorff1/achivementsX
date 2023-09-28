@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>x_axhievments</title>
-</head>
-
 <body>
   <h1>x_axhievments</h1>
 
