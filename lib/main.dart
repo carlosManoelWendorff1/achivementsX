@@ -5,17 +5,23 @@ import 'package:x_axhievments/screens/register_page.dart';
 import 'Models/game.dart';
 import 'screens/game_list_page.dart';
 import 'screens/login_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() {
-  runApp(MyApp());
-}
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
 
-class _MyAppState extends State<MyApp> {
+
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  final CollectionReference gamesCollection = FirebaseFirestore.instance.collection('games');
+
   final List<Game> games = [
     Game(
       name: 'Super Adventure Quest',
@@ -120,6 +126,52 @@ class _MyAppState extends State<MyApp> {
     ),
   ];
 
+ // for (Game game in games) {
+ //     await gamesCollection.add({
+ //       'name': game.name,
+ //       'imageAsset': game.imageAsset,
+ //       'description': game.description,
+ //       'achievements': game.achievements.map((ach) => {
+ //         'name': ach.name,
+ //         'description': ach.description,
+ //         'status': ach.status,
+ //       }).toList(),
+ //     });
+ // }  
+  runApp(MyApp());
+}
+
+
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+Future<List<Game>> getGames() async {
+    final CollectionReference gamesCollection =
+        FirebaseFirestore.instance.collection('games');
+    QuerySnapshot gameDocuments = await gamesCollection.get();
+    List<Game> games = gameDocuments.docs.map((DocumentSnapshot document) {
+      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+      return Game(
+        name: data['name'],
+        imageAsset: data['imageAsset'],
+        description: data['description'],
+        achievements: (data['achievements'] as List).map((ach) {
+        return Achievement(
+          name: ach['name'],
+          description: ach['description'],
+          status: ach['status'],
+        );
+      }).toList());
+    }).toList();
+    return games;
+  }
+
+class _MyAppState extends State<MyApp> {
+ 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -135,9 +187,9 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => LoginPage(),
         '/login': (context) => LoginPage(),
-        '/gameList': (context) => GameListPage(games: games),
+        '/gameList': (context) => GameListPage(),
         '/profile': (context) => ProfileScreen(),
-        '/registration': (context) => RegisterPage()
+        '/registration': (context) => SignUpPage()
         // Add more routes as needed
       },
     );

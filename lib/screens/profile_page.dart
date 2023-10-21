@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
           }
            if (index == 2) {
             // Navigate to the /login route when "Settings" tab is tapped
-            Navigator.of(context).pushNamed('/login');
+            Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
           }
         },
         items: [

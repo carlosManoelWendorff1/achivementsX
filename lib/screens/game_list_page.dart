@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:x_axhievments/main.dart';
 
 import '../Models/game.dart';
 import '../widgets/game_panel.dart';
@@ -6,33 +7,39 @@ import '../widgets/game_panel.dart';
 class GameListPage extends StatelessWidget {
   int _currentIndex = 1;
 
-  final List<Game> games;
-
-  GameListPage({required this.games});
+  final Future<List<Game>> games = getGames();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: [
-            GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1, // 2 painéis por linha
-                crossAxisSpacing: 16.0,
-                mainAxisSpacing: 16.0,
-              ),
-              // Remove the shrinkWrap property to make the GridView scrollable
-              physics: NeverScrollableScrollPhysics(), // to disable GridView's scrolling
-              shrinkWrap: true, // You won't see infinite size error
-
-              itemCount: games.length,
-              itemBuilder: (context, index) {
-                return GamePanel(game: games[index]);
-              },
-            ),
-          ],
+        child: FutureBuilder<List<Game>>(
+          future: games,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Center(child: Text('Error: ${snapshot.error}'));
+            } else {
+              final games = snapshot.data;
+              return SingleChildScrollView(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 1,
+                    crossAxisSpacing: 16.0,
+                    mainAxisSpacing: 16.0,
+                  ),
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: games?.length,
+                  itemBuilder: (context, index) {
+                    return GamePanel(game: games![index]);
+                  },
+                ),
+              );
+            }
+          },
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -41,11 +48,9 @@ class GameListPage extends StatelessWidget {
         unselectedItemColor: Colors.grey,
         onTap: (int index) {
           if (index == 2) {
-            // Navigate to the /login route when "Settings" tab is tapped
-            Navigator.of(context).pushNamed('/login');
+            Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
           }
           if (index == 0) {
-            // Navigate to the /login route when "Settings" tab is tapped
             Navigator.of(context).pushNamed('/profile');
           }
         },
@@ -66,4 +71,5 @@ class GameListPage extends StatelessWidget {
       ),
     );
   }
+  
 }
