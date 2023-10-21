@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "676397645276",
+    "project_id": "xachievments",
+    "storage_bucket": "xachievments.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676397645276:android:c1f532ccba5bbe7738a319",
+        "android_client_info": {
+          "package_name": "com.example.x_axhievments"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1caw7hJtx6qs1XCn2d95s-mZ84__83_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
