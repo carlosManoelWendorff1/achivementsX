@@ -1,14 +1,23 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:x_axhievments/screens/game_details_page.dart';
 import '../Models/game.dart';
+
 
 class GamePanel extends StatelessWidget {
   final Game game;
 
   GamePanel({required this.game});
+  
 
+  final storage = FirebaseStorage;
+  
   @override
   Widget build(BuildContext context) {
+    
+    final firebaseStorageURL = 'https://firebasestorage.googleapis.com/v0/b/xachievments.appspot.com/o/${game.imageAsset}?alt=media';
     return Card(
       elevation: 4.0,
       shape: RoundedRectangleBorder(
@@ -30,14 +39,12 @@ class GamePanel extends StatelessWidget {
             BoxDecoration(
               borderRadius: BorderRadius.circular(15.5)
             ),
-            child:
-            Image.asset(
-              game.imageAsset,
-              height: 250.0,
-              width: double
-                  .infinity, // Ensure the image covers the entire card width
-              fit: BoxFit.fill,
-            ),
+            child: Image.network(
+                firebaseStorageURL, // Replace with the actual Firebase Storage image URL
+                height: 250.0,
+                width: double.infinity,
+                fit: BoxFit.fill,
+              ),
             ),
             Positioned(
               bottom: 0,
@@ -82,4 +89,5 @@ class GamePanel extends StatelessWidget {
       ),
     );
   }
+  
 }
