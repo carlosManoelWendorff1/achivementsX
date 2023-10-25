@@ -22,7 +22,7 @@ class _GameEntryScreenState extends State<GameEntryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Criar conquista'),
+        title: Text('Criar jogo'),
       ),
       body: Form(
         key: _formKey,
@@ -57,7 +57,7 @@ class _GameEntryScreenState extends State<GameEntryScreen> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: _addAchievement,
-              child: Text('Adicionar conquista'),
+              child: Text('Adicionar Conquista'),
             ),
             SizedBox(height: 20),
             ElevatedButton(

@@ -12,9 +12,12 @@ class GameListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Padding(
+        
         padding: const EdgeInsets.all(16.0),
         child: FutureBuilder<List<Game>>(
+          
           future: games,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -42,16 +45,20 @@ class GameListPage extends StatelessWidget {
           },
         ),
       ),
+      floatingActionButton:FloatingActionButton(
+            backgroundColor: Colors.green,
+            onPressed: () {
+              Navigator.of(context).pushNamed('/gameAdd');
+            },
+            child: Icon(Icons.add, color: Colors.white),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         selectedItemColor: Colors.green,
         unselectedItemColor: Colors.grey,
         onTap: (int index) {
-          if (index == 3) {
-            Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
-          }
           if (index == 2) {
-            Navigator.of(context).pushNamed('/gameAdd');
+            Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
           }
           if (index == 0) {
             Navigator.of(context).pushNamed('/profile');
@@ -65,10 +72,6 @@ class GameListPage extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'add game',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.logout),
