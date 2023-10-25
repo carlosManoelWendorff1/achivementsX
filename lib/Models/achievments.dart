@@ -1,9 +1,23 @@
 import 'dart:ffi';
 
 class Achievement {
-  final String name;
-  final String description;
-  final bool status;
+    String name;
+    String description;
+    bool status;
 
   Achievement({required this.name, required this.description,required this.status});
+
+  setName(String newName){
+    name = newName;
+  }
+  setdescription(String newDescription){
+    description = newDescription;
+  }
+  setstatus(bool newStatus){
+    status = newStatus;
+  }
+  Achievement.defaultValues()
+      : name = '',
+        description = '',
+        status = false;
 }

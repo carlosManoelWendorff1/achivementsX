@@ -47,8 +47,11 @@ class GameListPage extends StatelessWidget {
         selectedItemColor: Colors.green,
         unselectedItemColor: Colors.grey,
         onTap: (int index) {
-          if (index == 2) {
+          if (index == 3) {
             Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
+          }
+          if (index == 2) {
+            Navigator.of(context).pushNamed('/gameAdd');
           }
           if (index == 0) {
             Navigator.of(context).pushNamed('/profile');
@@ -62,6 +65,10 @@ class GameListPage extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            label: 'add game',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.logout),

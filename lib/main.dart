@@ -4,6 +4,7 @@ import 'package:x_axhievments/Models/achievments.dart';
 import 'package:x_axhievments/screens/profile_page.dart';
 import 'package:x_axhievments/screens/register_page.dart';
 import 'Models/game.dart';
+import 'screens/game_add_page.dart';
 import 'screens/game_list_page.dart';
 import 'screens/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -76,6 +77,7 @@ class _MyAppState extends State<MyApp> {
         '/': (context) => LoginPage(),
         '/login': (context) => LoginPage(),
         '/gameList': (context) => GameListPage(),
+        '/gameAdd': (context) => GameEntryScreen(),
         '/profile': (context) => ProfileScreen(),
         '/registration': (context) => SignUpPage()
         // Add more routes as needed
