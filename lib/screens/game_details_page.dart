@@ -1,13 +1,17 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:x_axhievments/Models/game.dart';
 
 class GameDetailScreen extends StatelessWidget {
+
+  final storage = FirebaseStorage;
   final Game game;
 
   GameDetailScreen({required this.game});
 
   @override
   Widget build(BuildContext context) {
+    final firebaseStorageURL = 'https://firebasestorage.googleapis.com/v0/b/xachievments.appspot.com/o/${game.imageAsset}?alt=media';
     return Scaffold(
       appBar: AppBar(
         title: Text(game.name),
@@ -18,9 +22,9 @@ class GameDetailScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Image.asset(
-                game.imageAsset,
-                height: 300.0, // Make the image larger
+              Image.network(
+                firebaseStorageURL, // Replace with the actual Firebase Storage image URL
+                height: 300.0,
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 16.0),
