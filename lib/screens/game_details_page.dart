@@ -1,6 +1,45 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:x_axhievments/Models/game.dart';
+
+
+void deleteGame(BuildContext context,Game game) {
+    // Show a confirmation dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Deletar jogo?'),
+          content: Text('Tem certeza que quer deletar o jogo?'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancelar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Deletar'),
+              onPressed: () async {
+                // Delete the game from Firestore
+                // Delete the associated files from Firebase Storage
+
+                // Example code for deleting a Firestore document
+                final gameCollection = FirebaseFirestore.instance.collection('games');
+                await gameCollection.doc(game.id).delete();
+                //final storageReference = FirebaseStorage.instance.ref().child(game.imageAsset);
+                //await storageReference.delete();
+
+                Navigator.of(context).pop(); // Close the dialog
+                Navigator.of(context).pushNamed('/gameList'); // Close the game detail screen
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
 class GameDetailScreen extends StatelessWidget {
 
@@ -15,6 +54,13 @@ class GameDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(game.name),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
+        onPressed: () {
+          deleteGame(context,game);
+        },
+        child: Icon(Icons.delete,color: Colors.white,),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -43,7 +43,10 @@ Future<List<Game>> getGames() async {
     QuerySnapshot gameDocuments = await gamesCollection.get();
     List<Game> games = gameDocuments.docs.map((DocumentSnapshot document) {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+      String documentId = document.id;
+      print(documentId);
       return Game(
+        id:documentId,
         name: data['name'],
         imageAsset: data['imageAsset'],
         description: data['description'],
@@ -71,6 +74,11 @@ class _MyAppState extends State<MyApp> {
         iconTheme: IconThemeData(
           color: Colors.green, // Set the default icon color to green
         ),
+        elevatedButtonTheme:  ElevatedButtonThemeData(
+         style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+         ) 
+        )
       ),
       initialRoute: '/',
       routes: {

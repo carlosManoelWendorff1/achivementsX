@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:x_axhievments/Models/achievments.dart';
@@ -20,7 +22,7 @@ class _GameEntryScreenState extends State<GameEntryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add a Game'),
+        title: Text('Criar conquista'),
       ),
       body: Form(
         key: _formKey,
@@ -29,25 +31,25 @@ class _GameEntryScreenState extends State<GameEntryScreen> {
           children: <Widget>[
             TextFormField(
               controller: nameController,
-              decoration: InputDecoration(labelText: 'Game Name'),
+              decoration: InputDecoration(labelText: 'Nome do jogo'),
               validator: (value) {
                 if (value!.isEmpty) {
-                  return 'Please enter a game name';
+                  return 'Informe o nome do jogo';
                 }
                 return null;
               },
             ),
             TextFormField(
               controller: imageAssetController,
-              decoration: InputDecoration(labelText: 'Image Asset URL'),
+              decoration: InputDecoration(labelText: 'URL da imagem'),
             ),
             TextFormField(
               controller: descriptionController,
-              decoration: InputDecoration(labelText: 'Description'),
+              decoration: InputDecoration(labelText: 'Descrição'),
             ),
             SizedBox(height: 20),
             Text(
-              'Achievements',
+              'Conquistas',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
@@ -55,12 +57,12 @@ class _GameEntryScreenState extends State<GameEntryScreen> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: _addAchievement,
-              child: Text('Add Achievement'),
+              child: Text('Adicionar conquista'),
             ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: _submitForm,
-              child: Text('Submit'),
+              child: Text('Criar jogo'),
             ),
           ],
         ),
@@ -107,6 +109,7 @@ class _GameEntryScreenState extends State<GameEntryScreen> {
     if (_formKey.currentState!.validate()) {
       // Create a Game object with the filled data
       Game newGame = Game(
+        id: Random().toString(),
         name: nameController.text,
         imageAsset: imageAssetController.text,
         description: descriptionController.text,
