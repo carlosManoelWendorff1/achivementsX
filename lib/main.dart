@@ -4,6 +4,7 @@ import 'package:x_axhievments/Models/achievments.dart';
 import 'package:x_axhievments/screens/profile_page.dart';
 import 'package:x_axhievments/screens/register_page.dart';
 import 'Models/game.dart';
+import 'screens/game_add_page.dart';
 import 'screens/game_list_page.dart';
 import 'screens/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -42,7 +43,10 @@ Future<List<Game>> getGames() async {
     QuerySnapshot gameDocuments = await gamesCollection.get();
     List<Game> games = gameDocuments.docs.map((DocumentSnapshot document) {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+      String documentId = document.id;
+      print(documentId);
       return Game(
+        id:documentId,
         name: data['name'],
         imageAsset: data['imageAsset'],
         description: data['description'],
@@ -70,12 +74,18 @@ class _MyAppState extends State<MyApp> {
         iconTheme: IconThemeData(
           color: Colors.green, // Set the default icon color to green
         ),
+        elevatedButtonTheme:  ElevatedButtonThemeData(
+         style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+         ) 
+        )
       ),
       initialRoute: '/',
       routes: {
         '/': (context) => LoginPage(),
         '/login': (context) => LoginPage(),
         '/gameList': (context) => GameListPage(),
+        '/gameAdd': (context) => GameEntryScreen(),
         '/profile': (context) => ProfileScreen(),
         '/registration': (context) => SignUpPage()
         // Add more routes as needed

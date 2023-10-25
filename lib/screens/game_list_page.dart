@@ -12,9 +12,12 @@ class GameListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Padding(
+        
         padding: const EdgeInsets.all(16.0),
         child: FutureBuilder<List<Game>>(
+          
           future: games,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -41,6 +44,13 @@ class GameListPage extends StatelessWidget {
             }
           },
         ),
+      ),
+      floatingActionButton:FloatingActionButton(
+            backgroundColor: Colors.green,
+            onPressed: () {
+              Navigator.of(context).pushNamed('/gameAdd');
+            },
+            child: Icon(Icons.add, color: Colors.white),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
