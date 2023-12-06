@@ -1,7 +1,10 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:x_axhievments/Models/achievments.dart';
 
 import '../Models/game.dart';
@@ -20,6 +23,7 @@ class _GameEntryScreenState extends State<GameEntryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ImagePicker _picker = ImagePicker();
     return Scaffold(
       appBar: AppBar(
         title: Text('Criar jogo'),
@@ -39,10 +43,20 @@ class _GameEntryScreenState extends State<GameEntryScreen> {
                 return null;
               },
             ),
-            TextFormField(
-              controller: imageAssetController,
-              decoration: InputDecoration(labelText: 'URL da imagem'),
-            ),
+            // Modify TextFormField for Image Selection
+        TextFormField(
+        controller: imageAssetController,
+        onTap: () async {
+        final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+            if (pickedFile != null) {
+              setState(() {
+                imageAssetController.text = pickedFile.path;
+              });
+            }
+          },
+          decoration: InputDecoration(labelText: 'Selecione a imagem'),
+            readOnly: true, // So that the field can't be manually edited
+           ),
             TextFormField(
               controller: descriptionController,
               decoration: InputDecoration(labelText: 'Descrição'),
@@ -108,10 +122,17 @@ class _GameEntryScreenState extends State<GameEntryScreen> {
   Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
       // Create a Game object with the filled data
+      // Upload image to Firebase Storage
+      Reference storageReference = FirebaseStorage.instance.ref().child('images/${DateTime.now().millisecondsSinceEpoch}');
+      UploadTask uploadTask = storageReference.putFile(File(imageAssetController.text));
+      String imageUrl = '';
+      await uploadTask.whenComplete(() async {
+        imageUrl = await storageReference.getDownloadURL();
+      });
       Game newGame = Game(
         id: Random().toString(),
         name: nameController.text,
-        imageAsset: imageAssetController.text,
+        imageAsset: imageUrl,
         description: descriptionController.text,
         achievements: achievements,
       );

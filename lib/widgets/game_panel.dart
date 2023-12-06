@@ -17,7 +17,7 @@ class GamePanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    final firebaseStorageURL = 'https://firebasestorage.googleapis.com/v0/b/xachievments.appspot.com/o/${game.imageAsset}?alt=media';
+    final firebaseStorageURL = game.imageAsset;
     return Card(
       elevation: 4.0,
       shape: RoundedRectangleBorder(

@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:x_axhievments/firebase_auth.dart';
 import 'package:x_axhievments/screens/register_page.dart';
 import '../widgets/form_container.dart';
@@ -107,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 20),
               // Google Sign-In Button
               ElevatedButton(
-                onPressed: _signInWithGoogle,
+                onPressed: doNothing(),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.red, // Change color as needed
                   shape: RoundedRectangleBorder(
@@ -125,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 10),
               // Facebook Sign-In Button
               ElevatedButton(
-                onPressed: _signInWithFacebook,
+                onPressed: doNothing(),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue, // Change color as needed
                   shape: RoundedRectangleBorder(
@@ -162,52 +160,8 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  void _signInWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    if (googleUser == null) {
-      return;
-    }
+  
+ doNothing(){
 
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-    final AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    final UserCredential authResult =
-        await FirebaseAuth.instance.signInWithCredential(credential);
-    final User? user = authResult.user;
-
-    if (user != null) {
-      Navigator.pushNamed(context, "/gameList");
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Google Sign-In failed"),
-        ),
-      );
-    }
-  }
-
-  void _signInWithFacebook() async {
-    Navigator.pushNamed(context, "/gameList");
-    final result = await FacebookAuth.instance.login();
-    if (result.status == LoginStatus.success) {
-      final AuthCredential credential =
-          FacebookAuthProvider.credential(result.accessToken!.token);
-      final UserCredential authResult =
-          await FirebaseAuth.instance.signInWithCredential(credential);
-      final User? user = authResult.user;
-
-      if (user != null) {
-        Navigator.pushNamed(context, "/gameList");
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("Facebook Sign-In failed"),
-          ),
-        );
-      }
-    }
-  }
+ }
 }

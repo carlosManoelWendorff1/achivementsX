@@ -223,7 +223,7 @@ class GameDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firebaseStorageURL = 'https://firebasestorage.googleapis.com/v0/b/xachievments.appspot.com/o/${game.imageAsset}?alt=media';
+    final firebaseStorageURL = game.imageAsset;
 
     return Scaffold(
       appBar: AppBar(
